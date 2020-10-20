@@ -10,16 +10,8 @@ import statsmodels.formula.api as smf
 king_county_house = pd.read_csv("data/King_County_House_prices_dataset.csv", delimiter=",")
 
 # Set correct format
-king_county_house["id"] = king_county_house["id"].astype("str")
-king_county_house["date"] = pd.to_datetime(king_county_house["date"]).dt.date
 king_county_house["price"] = king_county_house["price"].astype("int")
-king_county_house["waterfront"] = king_county_house["waterfront"].astype("category")
-king_county_house["view"] = king_county_house["view"].fillna(0).astype("int")
-king_county_house["condition"] = king_county_house["condition"].astype("category")
 king_county_house["grade"] = king_county_house["grade"].astype("category")
-king_county_house["sqft_basement"] = pd.to_numeric(king_county_house["sqft_basement"], errors='coerce')
-king_county_house["zipcode"] = king_county_house["zipcode"].astype("category")
-king_county_house["yr_renovated"] = king_county_house["yr_renovated"].fillna(0).astype("int")
 
 # Remove outlier
 king_county_house = king_county_house[king_county_house["bedrooms"] != 33]
